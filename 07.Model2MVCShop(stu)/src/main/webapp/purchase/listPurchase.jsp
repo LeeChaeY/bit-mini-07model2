@@ -29,7 +29,7 @@
 
 <div style="width: 98%; margin-left: 10px;">
 
-<form name="detailForm" action="/listPurchase.do" method="post">
+<form name="detailForm" action="/purchase/listPurchase" method="post">
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
@@ -118,12 +118,12 @@
 		</td>
 		<td></td>
 		<td align="left">
-			<a href="/getProduct.do?menu=search&prodNo=${ purchase.purchaseProd.prodNo }">${ purchase.purchaseProd.prodName }</a>
+			<a href="/purchase/getProduct?menu=search&prodNo=${ purchase.purchaseProd.prodNo }">${ purchase.purchaseProd.prodName }</a>
 		</td>
 		<td></td>
 		<td align="left">
 			${ purchase.orderDate }
-			<a href="/getPurchase.do?tranNo=${ purchase.tranNo }" style="margin:30px">구매상세조회</a>
+			<a href="/purchase/getPurchase?tranNo=${ purchase.tranNo }" style="margin:30px">구매상세조회</a>
 		</td>
 		<td></td>
 		<td align="left">${ purchase.divyAddr }</td>
@@ -148,7 +148,7 @@
 			<%--배송중 상태면 보임, 사용자가 배송완료되면 누르게끔
 			물건 도착하면 정보수정에 아무것도 없음, 관리자 사용자 모두 배송완료로 바뀜 --%>
 			<c:if test="${ !empty purchase.tranCode && purchase.tranCode.equals('3') }">
-				<a href="/updateTranCode.do?tranNo=${ purchase.tranNo }&tranCode=${ purchase.tranCode }">물건도착</a>
+				<a href="/purchase/updateTranCode?tranNo=${ purchase.tranNo }&tranCode=${ purchase.tranCode }&currentPage=${resultPage.currentPage}">물건도착</a>
 			</c:if>
 		</td>
 	</tr>

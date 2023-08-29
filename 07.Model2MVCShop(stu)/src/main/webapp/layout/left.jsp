@@ -27,14 +27,14 @@
 						<c:if test="${ !empty user }">
 							<tr>
 							<td class="Depth03">
-								<a href="/getUser.do?userId=${ user.getUserId() }" target="rightFrame">개인정보조회</a>
+								<a href="/user/getUser?userId=${ user.getUserId() }" target="rightFrame">개인정보조회</a>
 							</td>
 							</tr>
 							
 							<c:if test="${ !empty user.role &&  user.role.equals('admin')}">
 								<tr>
 									<td class="Depth03" >
-										<a href="/listUser.do" target="rightFrame">회원정보조회</a>
+										<a href="/user/listUser" target="rightFrame">회원정보조회</a>
 									</td>
 								</tr>
 							</c:if>
@@ -52,11 +52,11 @@
 					<table  border="0" cellspacing="0" cellpadding="0" width="159">
 						<tr>
 							<td class="Depth03">
-								<a href="/addProductView.do" target="rightFrame">판매상품등록</a>
+								<a href="/product/addProduct" target="rightFrame">판매상품등록</a>
 							</td>
 						</tr>
 						<td class="Depth03">
-								<a href="/listProduct.do?menu=manage" target="rightFrame">판매상품관리</a>
+								<a href="/product/listProduct?menu=manage" target="rightFrame">판매상품관리</a>
 							</td>
 						</tr>
 						<tr>
@@ -72,14 +72,14 @@
 				<table  border="0" cellspacing="0" cellpadding="0" width="159">
 					<tr>
 						<td class="Depth03">
-							<a href="/listProduct.do?menu=search" target="rightFrame">상 품 검 색</a>
+							<a href="/product/listProduct?menu=search" target="rightFrame">상 품 검 색</a>
 						</td>
 					</tr>
 			
 					<c:if test="${!empty user && !empty user.role && user.role.equals('user') }">
 						<tr>
 							<td class="Depth03">
-								<a href="/listPurchase.do" target="rightFrame">구매이력조회</a>
+								<a href="/purchase/listPurchase" target="rightFrame">구매이력조회</a>
 							</td>
 						</tr>
 					</c:if>

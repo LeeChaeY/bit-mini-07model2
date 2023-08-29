@@ -108,7 +108,7 @@
 <body bgcolor="#ffffff" text="#000000">
 
 <div style="width:98%; margin-left:10px;">
-<form name="detailForm" action="/listProduct.do?menu=${!empty menu ? menu : ''}" method="post">
+<form name="detailForm" action="/product/listProduct?menu=${!empty menu ? menu : ''}" method="post">
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
@@ -226,7 +226,7 @@
 			<td align="center">${ i }</td>
 			<td></td>
 			<td align="left">
-				<a href="/getProduct.do?prodNo=${ product.prodNo }&menu=${ menu }">${ product.prodName }</a>
+				<a href="/product/getProduct?prodNo=${ product.prodNo }&menu=${ menu }">${ product.prodName }</a>
 			</td>
 			
 			<td></td>
@@ -259,9 +259,9 @@
 						</c:when>
 					</c:choose>
 					<c:if test="${ menu.equals('manage') &&  !empty product.proTranCode && product.proTranCode.equals('2') }">
-						<a href="/updateTranCodeByProd.do?prodNo=${ product.prodNo }&tranCode=${product.proTranCode }">배송하기</a>
+						<a href="/purchase/updateTranCodeByProd?prodNo=${ product.prodNo }&tranCode=${product.proTranCode }&currentPage=${resultPage.currentPage}">배송하기</a>
 					</c:if>
-					<%-- <a href="/updateTranCodeByProd.do?prodNo=10001&tranCode=2">배송하기</a>
+					<%-- <a href="/purchase/updateTranCodeByProd?prodNo=10001&tranCode=2">배송하기</a>
 					관리자에게만 보이는 것, 상품 관리에는 있음, 상품 검색에는 없음 
 					배송하기 누르면 배송중으로 변경, 상품관리 페이지로 다시 리로드
 					배송하기 버튼이 있는 구매 완료일때 tranCode 2로 넘겨줌--%>

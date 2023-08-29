@@ -63,7 +63,7 @@ function fncDeleteCookieprodNoo) {
 			for (int i = h.length-1; i >= 0; i--) {
 				if (!h[i].equals("null")) {
 					%>
-						<a href="/getProduct.do?prodNo=<%=h[i]%>&menu=search"	target="rightFrame"><%=h[i]%></a>
+						<a href="/product/getProduct?prodNo=<%=h[i]%>&menu=search"	target="rightFrame"><%=h[i]%></a>
 						<!--  <button onClick="javascript:fncDeleteCookie('<%= h[i] %>'')" style="margin:5px">ªË¡¶</button>
 						-->
 						<br>
