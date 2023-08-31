@@ -69,8 +69,6 @@ public class PurchaseController {
 	
 	@RequestMapping(value="addPurchase", method=RequestMethod.POST )
 	public ModelAndView addPurchase( @ModelAttribute("purchase") Purchase purchase, HttpSession session) throws Exception {
-		purchase.setBuyer((User)session.getAttribute("user"));
-		purchase.setPurchaseProd(productService.getProduct(purchase.getPurchaseProd().getProdNo()));
 		
 		System.out.println("/purchase/addPurchase : POST : "+purchase);
 		//Business Logic

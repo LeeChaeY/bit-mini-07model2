@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.DiskFileUpload;
+import org.apache.commons.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +28,8 @@ import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
 import com.model2.mvc.service.product.ProductService;
+
+import oracle.net.aso.f;
 
 
 //==> 회원관리 Controller
@@ -62,15 +67,29 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="addProduct", method=RequestMethod.POST)
-	public String addProduct( @ModelAttribute("product") Product product , Model model ) throws Exception {
-		product.setManuDate(product.getManuDate().replace("-", ""));
-		
-		System.out.println("addProduct : POST : "+product);
-		//Business Logic
-		productService.addProduct(product);
-		
-		model.addAttribute("product", product);
-		
+	public String addProduct( @ModelAttribute("product") Product product , Model model, HttpServletRequest request) throws Exception {
+		if (FileUpload.isMultipartContent(request)) {
+			String temDir2 = "/uploadFiles/";
+			
+			product.setManuDate(product.getManuDate().replace("-", ""));
+			
+			System.out.println("addProduct : POST : "+product);
+			
+			DiskFileUpload fileUpload = new DiskFileUpload();
+			fileUpload.setRepositoryPath(temDir2);
+			fileUpload.setFileSizeMax(1024 * 1024 * 10);
+			fileUpload.setSizeThreshold(1024 * 100);
+			
+			if(request.getContentLength() < fileUpload.getSizeMax()) {
+				StringTokenizer token = null;
+			}
+			
+			
+			//Business Logic
+			productService.addProduct(product);
+			
+			model.addAttribute("product", product);
+		}
 		return "forward:/product/addProduct.jsp";
 	}
 	
